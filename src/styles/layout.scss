@@ -1,0 +1,75 @@
+@mixin narrowed($width) {
+  max-width: $width;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin position($pos, $l: default, $t: default, $r: default, $b: default) {
+  position: $pos;
+
+  @if $l != default {
+    left: $l;
+  }
+
+  @if $t != default {
+    top: $t;
+  }
+
+  @if $r != default {
+    right: $r;
+  }
+
+  @if $b != default {
+    bottom: $b;
+  }
+}
+
+@mixin column($ma: default, $ca: default) {
+  display: flex;
+  flex-direction: column;
+
+  @if $ma != default {
+    justify-content: $ma;
+  }
+
+  @if $ca != default {
+    align-items: $ca;
+  }
+}
+
+@mixin row($ma: default, $ca: default) {
+  display: flex;
+  flex-direction: row;
+
+  @if $ma != default {
+    justify-content: $ma;
+  }
+
+  @if $ca != default {
+    align-items: $ca;
+  }
+}
+
+@mixin grid($cols: auto, $rows: auto) {
+  display: grid;
+  align-content: start;
+
+  @if $cols != default {
+    grid-template-columns: $cols;
+  }
+
+  @if $rows != default {
+    grid-template-rows: $rows;
+  }
+}
+
+@mixin grid-gap($r: 0, $c: 0) {
+  grid-gap: $r $c;
+  -webkit-grid-gap: $r $c;
+  -o-grid-gap: $r $c;
+  -moz-grid-gap: $r $c;
+}
+

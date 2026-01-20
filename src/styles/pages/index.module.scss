@@ -1,0 +1,23 @@
+@use '~/styles/layout.scss' as l;
+
+.indexPage {
+  @include l.column();
+  margin: 20px;
+
+  .demoSection {
+    @include l.column();
+
+    .caption {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+  }
+
+  .counter {
+    @include l.row(flex-start, center);
+
+    button {
+      margin-left: 10px;
+    }
+  }
+}

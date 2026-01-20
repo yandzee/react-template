@@ -10,4 +10,8 @@ export class CounterUI {
   public get num() {
     return this.shared.store.counter.num;
   }
+
+  public increment() {
+    this.shared.store.counter.num += 1;
+  }
 }
