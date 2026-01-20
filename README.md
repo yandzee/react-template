@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# Vite (Rolldown) / React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup to get React working in Vite with HMR.
+It also include minimal setup for [Layed Architecture](https://whimsical.com/frontend-client-Y1bf92fMPRe9KufWDWT1tC) (View -> UI Layer -> DataLayer)
+where reactivity is not lost and is provided by MobX.
 
-Currently, two official plugins are available:
+MobX gives us freedom not to use useless wrappers like in Jotai, Zustand and
+other inefficient tools. Just think about the data as if it was plain Vanilla Js.
+The only downside of using MobX is `makeAutoObservable` (or similar) calls for the data.
+This is the current state of the art in react world and I didn't see anywhere that
+better is possible. In more advanced frameworks like `Vue` we got `reactive` built-in
+which makes entire reactivity work just in one place when you initialize
+`reactive(new Store())` or `reactive(new UILayer())`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Running
 
-## React Compiler
+Just do `pnpm dev` in the project root.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Showcase
 
-## Expanding the ESLint configuration
+On index page you can find quick demonstration that this setup is working and
+provides much more efficient and plain ways of controlling and organizing data
+or business logic.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Simple reactivity (Counter)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Currently there is only one demo case presented. Simple counter with button
+that increments the number.
